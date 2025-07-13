@@ -1,0 +1,136 @@
+.authWrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f7f7f7 100%);
+
+  .form {
+    background: #fff;
+    padding: 2.2rem 1.2rem 1.7rem 1.2rem;
+    border-radius: 18px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.13);
+    min-width: 0;
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: stretch;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1.2s;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.2rem;
+      color: #222;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, #0070f3 30%, #222 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .inputWrapper {
+      position: relative;
+      margin-bottom: 0.2rem;
+      display: flex;
+      flex-direction: column-reverse;
+      width: 100%;
+      .input {
+        width: 100%;
+        padding: 1.1rem 2.5rem 0.5rem 1rem;
+        min-height: 48px;
+        border-radius: 14px;
+        border: 1.5px solid rgba(0,112,243,0.13);
+        background: rgba(255,255,255,0.7);
+        box-shadow: 0 2px 12px rgba(0,112,243,0.06);
+        color: #222;
+        font-size: 1.08rem;
+        backdrop-filter: blur(10px) saturate(120%);
+        transition: box-shadow 0.2s, border 0.2s, background 0.2s;
+        outline: none;
+        &::placeholder {
+          color: #b0b0b0;
+          font-size: 1rem;
+          opacity: 0.7;
+        }
+        &:focus {
+          box-shadow: 0 0 0 2px #0070f3, 0 2px 12px rgba(0,112,243,0.13);
+          border: 1.5px solid #0070f3;
+          background: rgba(255,255,255,0.95);
+        }
+        &:focus ~ .floatingLabel,
+        &:not(:placeholder-shown):not([value=""]) ~ .floatingLabel {
+          top: 0.3rem;
+          right: 2.7rem;
+          font-size: 0.92rem;
+          color: #0070f3;
+          background: #fff;
+          padding: 0 0.3rem;
+          opacity: 1;
+        }
+      }
+      .floatingLabel {
+        position: absolute;
+        right: 2.7rem;
+        top: 1.2rem;
+        font-size: 1.08rem;
+        color: #444;
+        pointer-events: none;
+        background: transparent;
+        transition: all 0.18s cubic-bezier(.4,2,.6,1);
+        opacity: 0.85;
+        z-index: 2;
+      }
+      .icon {
+        position: absolute;
+        right: 0.8rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.3rem;
+        color: #0070f3;
+        pointer-events: none;
+        z-index: 3;
+      }
+    }
+    .errorText {
+      color: #e00;
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+    }
+    .button {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,112,243,0.09);
+      transition: transform 0.15s;
+      width: 100%;
+      min-height: 44px;
+      &:hover {
+        transform: translateY(-2px) scale(1.03);
+      }
+    }
+  }
+  @media (max-width: 480px) {
+    .form {
+      padding: 1.2rem 0.5rem;
+      max-width: 98vw;
+    }
+    .inputWrapper .input {
+      font-size: 0.98rem;
+      min-height: 40px;
+      padding: 0.9rem 2.2rem 0.4rem 0.7rem;
+    }
+    .inputWrapper .floatingLabel {
+      font-size: 0.88rem;
+      right: 2.2rem;
+    }
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+} 
